@@ -1,0 +1,73 @@
+---
+import type { Icon } from "@/components/icons";
+import Email from "@/components/icons/Email.astro";
+import GitHub from "@/components/icons/GitHub.astro";
+import LinkedIn from "@/components/icons/LinkedIn.astro";
+import Telegram from "@/components/icons/Telegram.astro";
+
+import { basics } from "@resume";
+
+const { name, label, image, profiles } = basics;
+
+const icons: Icon = {
+  Email,
+  GitHub,
+  LinkedIn,
+  Telegram,
+};
+---
+
+<header>
+  <div>
+    <h1>{name}</h1>
+    <h3>{label}</h3>
+    <ul class="no-print">
+      {
+        profiles.map((profile) => {
+          const Icon = icons[profile.network];
+
+          return (
+            <li>
+              <a href={profile.url} class="icon" target="_blank" rel="noopener">
+                <Icon />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <p class="print">
+      {
+        profiles
+          .map((profile) => `${profile.network}: ${profile.url}`)
+          .join(" • ")
+      }
+    </p>
+  </div>
+  <div>
+    <img src={image} alt={name} />
+  </div>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8rem;
+    margin-top: 1rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  img {
+    border-radius: 10%;
+    width: 180px;
+    height: 180px;
+  }
+</style>

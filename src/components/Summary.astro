@@ -1,0 +1,12 @@
+---
+import { basics } from "@resume";
+
+const { summary } = basics;
+
+const paragraphs = summary.split("\n");
+---
+
+<section>
+  <h2>Acerca de mí</h2>
+  {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+</section>
