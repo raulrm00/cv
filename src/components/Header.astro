@@ -7,7 +7,7 @@ import Telegram from "@/components/icons/Telegram.astro";
 
 import { basics } from "@resume";
 
-const { name, label, image, profiles } = basics;
+const { name, label, image, email, profiles, location } = basics;
 
 const icons: Icon = {
   Email,
@@ -15,12 +15,18 @@ const icons: Icon = {
   LinkedIn,
   Telegram,
 };
+
+const linkedIn = profiles.find(
+  (profile) => profile.network === "LinkedIn"
+)?.url;
+const printableProfiles = [email, linkedIn].join(" • ");
 ---
 
-<header>
+<header class="flex flex-row items-center justify-between mt-4 gap-4">
   <div>
-    <h1>{name}</h1>
-    <h3>{label}</h3>
+    <h1 class="text-4xl print:text-2xl font-bold">{name}</h1>
+    <h3 class="text-2xl print:text-xl font-semibold">{label}</h3>
+    <p class="font-thin">{location.city}, {location.region}</p>
     <ul class="print:hidden">
       {
         profiles.map((profile) => {
@@ -36,15 +42,13 @@ const icons: Icon = {
         })
       }
     </ul>
-    <p class="hidden print:block">
-      {
-        profiles
-          .map((profile) => `${profile.network}: ${profile.url}`)
-          .join(" • ")
-      }
-    </p>
+    <p class="hidden print:block text-xs font-light">{printableProfiles}</p>
   </div>
   <div>
-    <img src={image} alt={name} />
+    <img
+      src={image}
+      alt={name}
+      class="aspect-square object-cover w-[128px] rounded-2xl"
+    />
   </div>
 </header>
