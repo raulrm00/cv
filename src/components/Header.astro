@@ -21,14 +21,14 @@ const icons: Icon = {
   <div>
     <h1>{name}</h1>
     <h3>{label}</h3>
-    <ul class="no-print">
+    <ul class="print:hidden">
       {
         profiles.map((profile) => {
           const Icon = icons[profile.network];
 
           return (
             <li>
-              <a href={profile.url} class="icon" target="_blank" rel="noopener">
+              <a href={profile.url} target="_blank" rel="noopener">
                 <Icon />
               </a>
             </li>
@@ -36,7 +36,7 @@ const icons: Icon = {
         })
       }
     </ul>
-    <p class="print">
+    <p class="hidden print:block">
       {
         profiles
           .map((profile) => `${profile.network}: ${profile.url}`)
@@ -48,26 +48,3 @@ const icons: Icon = {
     <img src={image} alt={name} />
   </div>
 </header>
-
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-    gap: 8rem;
-    margin-top: 1rem;
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 1rem;
-    }
-  }
-
-  img {
-    border-radius: 10%;
-    width: 180px;
-    height: 180px;
-  }
-</style>
