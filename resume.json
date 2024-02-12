@@ -34,13 +34,13 @@
   },
   "work": [
     {
-      "name": "Company",
-      "position": "President",
-      "url": "https://company.com",
-      "startDate": "2013-01-01",
-      "endDate": "2014-01-01",
-      "summary": "Description…",
-      "highlights": ["Started the company"]
+      "name": "Ginzo Technologies",
+      "position": "Full Stack Developer",
+      "url": "https://ginzo.tech/",
+      "startDate": "2021-01-01",
+      "endDate": "2023-10-01",
+      "summary": "Implicado en proyectos de larga duración",
+      "highlights": ["Spring Boot", "Angular", "Python"]
     }
   ],
   "volunteer": [
